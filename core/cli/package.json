@@ -1,0 +1,26 @@
+{
+  "name": "@snowypeak/snowpeak-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "bin": {
+    "snowpeak": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@snowypeak/snowpeak-log": "file:../../utils/log",
+    "colors": "^1.4.0",
+    "import-local": "^3.2.0",
+    "minimist": "^1.2.8",
+    "npmlog": "^4.1.2",
+    "path-exists": "^4.0.0",
+    "root-check": "^1.0.0",
+    "semver": "^7.7.1",
+    "user-home": "^3.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
