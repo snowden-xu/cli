@@ -1,5 +1,5 @@
 {
-  "name": "@snowypeak/cli-log",
+  "name": "@snowypeak/cli-get-npm-info",
   "version": "0.0.1",
   "description": "> TODO: description",
   "author": "snowden.xu <snowden.xu@gmail.com>",
@@ -13,13 +13,13 @@
   "files": [
     "lib"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "npmlog": "^4.1.2"
+    "axios": "^1.8.4",
+    "semver": "^7.7.1",
+    "url-join": "^4.0.1",
+    "@snowypeak/cli-log": "file:../log"
   }
 }

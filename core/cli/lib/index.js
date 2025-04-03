@@ -1,18 +1,24 @@
 'use strict'
 
+const path = require('path');
 const semver = require('semver');
 const colors = require('colors');
 const userHome = require('user-home');
 const pathExists = require('path-exists').sync;
 
+
 const pkg = require('../package.json');
-const log = require('@snowypeak/snowpeak-log');
+const log = require('@snowypeak/cli-log');
 const constant = require('./const');
 
 let args;
+let config;
 
+/**
+ * 检查并显示当前脚手架版本号
+ */
 function checkPkgVersion(){
-    log.notice('脚手架版本：', pkg.version)
+    log.notice('脚手架版本:', pkg.version)
 }
 
 function checkNodeVersion(){
@@ -48,9 +54,41 @@ function checkArgs(){
 function checkInputArgs(){
     const minimist = require('minimist');
     args = minimist(process.argv.slice(2));
-    console.log(args)
     checkArgs();
 }
+
+function createDefaultConfig(){
+    const cliConfig = {
+        home: userHome
+    }
+    if(process.env.CLI_HOME){
+        cliConfig['cliHome'] = path.join(userHome, process.env.CLI_HOME)
+    }else{
+        cliConfig['cliHome'] = path.join(userHome, constant.DEFAULT_CLI_HOME)
+    }
+    process.env.CLI_HOME_PATH = cliConfig.cliHome;
+}
+
+function checkEnv(){
+    const dotenv = require('dotenv');
+    const dotenvPath = path.resolve(userHome, '.env');
+    if(pathExists(dotenvPath)){
+        config = dotenv.config({
+            path: dotenvPath
+        })
+    }
+    createDefaultConfig()
+    log.verbose('环境变量:', process.env.CLI_HOME_PATH)
+}
+
+
+function checkGlobalUpdate(){
+    const currentVersion = pkg.version;
+    const npmName = pkg.name;
+    const {getNpmInfo} = require('@snowypeak/cli-get-npm-info');
+    getNpmInfo(npmName);
+}
+
 
 function core() {
     try{
@@ -59,7 +97,8 @@ function core() {
         checkRoot()
         checkUserHome()
         checkInputArgs()
-        log.verbose('debug','测试debug日志')
+        checkEnv()
+        checkGlobalUpdate()
     } catch (e){
         log.error(e.message)
     }

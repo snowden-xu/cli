@@ -1,6 +1,6 @@
 {
-  "name": "@snowypeak/snowpeak-utils",
-  "version": "1.0.0",
+  "name": "@snowypeak/cli-utils",
+  "version": "0.0.1",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
