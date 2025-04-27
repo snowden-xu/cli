@@ -10,8 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@snowypeak/cli-log": "file:../../utils/log",
-    "@snowypeak/cli-get-npm-info": "file:../../utils/get-npm-info",
+    "@snowypeak/cli-log": "^0.0.1",
+    "@snowypeak/cli-get-npm-info": "^0.0.1",
     "colors": "^1.4.0",
     "dotenv": "^16.4.7",
     "import-local": "^3.2.0",

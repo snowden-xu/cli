@@ -20,6 +20,6 @@
     "axios": "^1.8.4",
     "semver": "^7.7.1",
     "url-join": "^4.0.1",
-    "@snowypeak/cli-log": "file:../log"
+    "@snowypeak/cli-log": "^0.0.1"
   }
 }
